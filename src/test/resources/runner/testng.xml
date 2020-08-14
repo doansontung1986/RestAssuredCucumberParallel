@@ -1,0 +1,7 @@
+<suite name="Rest Assured Cucumber Parallel">
+    <test name="Test">
+        <classes>
+            <class name="TestRunner"></class>
+        </classes>
+    </test>
+</suite>

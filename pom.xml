@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>RestAssuredCucumberParallel</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Global Variable -->
+    <properties>
+        <!-- Encoding -->
+        <encoding>UTF-8</encoding>
+
+        <!-- Java version-->
+        <java.version>1.8</java.version>
+
+        <!-- Maven Compiler plugin -->
+        <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
+
+        <!-- Maven Surefire plugin -->
+        <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
+
+        <!-- Rest Assured version-->
+        <restassured.version>3.3.0</restassured.version>
+
+        <!-- Allure version-->
+        <allure.version>2.12.1</allure.version>
+        <allure.maven.version>2.9</allure.maven.version>
+
+        <!-- Aspectj version-->
+        <aspectj.version>1.9.4</aspectj.version>
+
+        <!-- Cucumber version-->
+        <cucumber.version>6.4.0</cucumber.version>
+
+        <!-- TestNG version-->
+        <testng.version>6.14.2</testng.version>
+
+        <!-- JUnit version-->
+        <junit.version>4.12</junit.version>
+
+        <!-- Jackson version-->
+        <jackson.version>2.11.2</jackson.version>
+
+        <!-- JSON version-->
+        <json.version>20180813</json.version>
+
+        <!-- Common IO version-->
+        <commonsio.version>2.7</commonsio.version>
+
+        <!-- Owner version-->
+        <owner.version>1.0.8</owner.version>
+
+        <!-- Lombok version-->
+        <lombok.version>1.18.10</lombok.version>
+
+    </properties>
+
+    <dependencies>
+
+        <!-- Rest Assured dependencies -->
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restassured.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${restassured.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${restassured.version}</version>
+        </dependency>
+
+        <!-- Jackson dependencies -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- Json dependencies -->
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+
+        <!-- Common IO dependencies -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commonsio.version}</version>
+        </dependency>
+
+        <!-- Cucumber dependencies -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <!-- Owner dependencies -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>${owner.version}</version>
+        </dependency>
+
+        <!-- JUnit dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+
+        <!-- TestNG dependencies -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+
+        <!-- Allure Report dependencies -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>${allure.maven.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <!-- Lombok dependencies -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Compile code -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin}</version>
+                <configuration>
+                    <encoding>${encoding}</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Run testcase/ test suite -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin}</version>
+                <configuration>
+                    <!-- Allure Report configuration-->
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                    <testFailureIgnore>false</testFailureIgnore>
+
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                        </property>
+                    </properties>
+
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+
+                    <!-- Test Suite -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/runner/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>
