@@ -4,19 +4,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
+import org.testng.ITest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class StepDefs extends BaseStep {
+public class StepDefs extends BaseStep implements ITest {
 
-    @Test(description = "TC: LoginGoSELL", dataProvider = "scenarios")
-    public void signUp(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
+    @Test(description = "TC: Step Example", dataProvider = "scenarios")
+    public void scenarioName(PickleWrapper pickle, FeatureWrapper cucumberFeature) {
         testRunner = new TestNGCucumberRunner(this.getClass());
         testRunner.runScenario(pickle.getPickle());
     }
 
     @Override
-    public String getFeatureName() {
+    public String getTestName() {
         return featureName;
     }
 
