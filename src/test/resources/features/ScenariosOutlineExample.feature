@@ -7,3 +7,6 @@ Feature: Outlines Example Feature File
       | scenario_outline_row_number |
       | Scenario Outline Row 1      |
       | Scenario Outline Row 2      |
+      | Scenario Outline Row 3      |
+      | Scenario Outline Row 4      |
+      | Scenario Outline Row 5      |

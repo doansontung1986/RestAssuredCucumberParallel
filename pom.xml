@@ -25,15 +25,8 @@
         <!-- Rest Assured version-->
         <restassured.version>3.3.0</restassured.version>
 
-        <!-- Allure version-->
-        <allure.version>2.12.1</allure.version>
-        <allure.maven.version>2.9</allure.maven.version>
-
-        <!-- Aspectj version-->
-        <aspectj.version>1.9.4</aspectj.version>
-
         <!-- Cucumber version-->
-        <cucumber.version>6.4.0</cucumber.version>
+        <cucumber.version>4.3.0</cucumber.version>
 
         <!-- TestNG version-->
         <testng.version>6.14.2</testng.version>
@@ -55,6 +48,9 @@
 
         <!-- Lombok version-->
         <lombok.version>1.18.10</lombok.version>
+
+        <!-- Javafaker version-->
+        <javafaker.version>1.0.1</javafaker.version>
 
     </properties>
 
@@ -161,37 +157,19 @@
             <version>${testng.version}</version>
         </dependency>
 
-        <!-- Allure Report dependencies -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-rest-assured</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-maven</artifactId>
-            <version>${allure.maven.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-
         <!-- Lombok dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- Javafaker dependencies-->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
         </dependency>
 
     </dependencies>
@@ -216,41 +194,35 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin}</version>
                 <configuration>
-                    <!-- Allure Report configuration-->
-                    <useSystemClassLoader>false</useSystemClassLoader>
-                    <testFailureIgnore>false</testFailureIgnore>
-
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
-                    </properties>
-
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                        </property>
-                    </systemProperties>
-
                     <!-- Test Suite -->
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/runner/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+            </plugin>
 
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Rest Assured Parallel Test Report</projectName>
+                            <skip>false</skip>
+                            <outputDirectory>${project.build.directory}/site/</outputDirectory>
+                            <inputDirectory>${project.build.directory}/site/</inputDirectory>
+                            <jsonFiles>
+                                <param>**/*.json</param>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,6 +1,6 @@
-import io.cucumber.junit.Cucumber;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.junit.runner.RunWith;
 import org.testng.annotations.DataProvider;
 
@@ -8,7 +8,10 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "steps",
-        monochrome = true
+        monochrome = true,
+        plugin = {
+                "pretty", "html:target/site/cucumber-report-default", "json:target/site/*.json"
+        }
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
     @Override
